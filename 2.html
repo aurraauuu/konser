@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Artist Collection - Modern</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <style>
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #printArea, #printArea * {
+                visibility: visible;
+            }
+            #printArea {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        }
+      
+
+        body {
+    background-color: #000000; 
+    padding-top: 80px;
+}
+
+        .btn-primary {
+            background-color: #70191a;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #800000; 
+        }
+        .artist-image {
+            width: 736px;
+            height: 736px;
+            object-fit: cover;
+        }
+
+        main {
+    padding-top: 80px; 
+}
+nav {
+    z-index: 50; 
+}
+
+
+    </style>
+</head>
+
+ <nav class="fixed top-0 left-0 w-full z-50 bg-transparent shadow-md transition-all duration-300 ease-in-out">
+    <div class="flex items-center justify-between max-w-screen-xl px-6 mx-auto py-4">
+        <!-- Logo -->
+        <a href="#" class="flex items-center space-x-2">
+          <img src="image/icon2.png" class="h-8 sm:h-10" alt="Concert Logo">
+
+            <span class="text-2xl font-semibold text-white">Auloora Concert</span>
+        </a>
+
+        <!-- Navigation Links -->
+        <div class="hidden lg:flex space-x-8">
+            <a href="ind.html" class="text-white hover:text-yellow-500 transition duration-300">Home</a>
+            <a href="#ind.html/About Event" class="text-white hover:text-yellow-500 transition duration-300">About Event</a>
+            <a href="#ind.html/Artist" class="text-white hover:text-yellow-500 transition duration-300">Artist</a>
+            <a href="#ind.html/Testimonial" class="text-white hover:text-yellow-500 transition duration-300">Testimonial </a>
+            <a href="#ind.html/Gallery" class="text-white hover:text-yellow-500 transition duration-300">Gallery</a>
+            <a href="#ind.html/Location" class="text-white hover:text-yellow-500 transition duration-300">Location</a>
+        </div>
+
+        <!-- Download Button -->
+        <a href="2.html"
+           class="hidden sm:inline-block bg-red-600 text-white py-2 px-6 rounded-lg hover:bg-red-700 transition-all duration-300">
+            Buy Ticket
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button data-collapse-toggle="mobile-menu-2" type="button"
+                class="inline-flex items-center p-2 text-white bg-transparent rounded-lg lg:hidden hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                      d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                      clip-rule="evenodd"></path>
+            </svg>
+        </button>
+    </div>
+</nav>
+<body class="text-white min-h-screen antialiased" x-data="collection">
+    <header class="py-8 px-6 bg-black-800 shadow-md">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-3xl md:text-4xl font-bold text-red-700">Artist Lineup</h1>
+            <p class="text-gray-400 mt-2">Explore and buy concert tickets from your favorite artists!</p>
+        </div>
+    </header>
+
+    <main class="py-12 px-6 max-w-7xl mx-auto">
+        <div class="flex flex-wrap justify-center gap-3 mb-8">
+            <template x-for="date in ['*', '2 Mei', '3 Mei', '4 Mei']" :key="date">
+                <button
+                    class="px-4 py-2 rounded-full font-semibold transition-colors duration-300"
+                    :class="filter === date ? 'bg-red-500 text-white hover:bg-red-600' : 'bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white'"
+                    @click="filter = date"
+                >
+                    <span x-text="date === '*' ? 'All' : date"></span>
+                </button>
+            </template>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <template x-for="artist in filteredArtists" :key="artist.name">
+                <div
+                    class="relative bg-gray-800 rounded-xl shadow-md overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-xl group"
+                    @click="selectArtist(artist)"
+                >
+                    <div class="relative">
+                        <img :src="artist.image" alt="Artist Photo" class="w-full h-56 object-cover rounded-t-xl transition-all duration-300 group-hover:scale-105 artist-image" loading="lazy">
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent opacity-60"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-semibold text-white truncate" x-text="artist.name"></h3>
+                            <p class="text-sm text-gray-300" x-text="'Rp ' + artist.price.toLocaleString()"></p>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h4 class="text-lg font-semibold text-white mb-2" x-text="artist.name"></h4>
+                        <p class="text-sm text-gray-300 mb-4">More Details</p>
+                        <button
+                            class="btn-primary text-white font-semibold py-2 px-4 rounded-full text-sm focus:outline-none"
+                            @click.stop="showModal = true"
+                        >
+                            View
+                        </button>
+                    </div>
+                </div>
+            </template>
+            <template x-if="filteredArtists.length === 0">
+                <div class="col-span-full text-center py-8 text-gray-500">
+                    No artists found matching the current filter.
+                </div>
+            </template>
+        </div>
+    </main>
+
+    <div
+        class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50"
+        x-show="showModal"
+        x-transition.opacity
+    >
+        <div
+            class="bg-gray-800 text-white w-full max-w-md p-6 rounded-xl shadow-2xl relative"
+            @click.away="showModal = false"
+        >
+            <button
+                class="absolute top-3 right-3 text-gray-400 hover:text-white text-xl focus:outline-none"
+                @click="showModal = false"
+                aria-label="Close artist details"
+            >&times;</button>
+            <h3 class="text-2xl font-bold mb-3" x-text="selected.name"></h3>
+            <p class="text-gray-400 mb-2">Performing in: <span x-text="selected.month"></span></p>
+            <p class="mb-4">Base Price: <span class="text-green-400 font-semibold" x-text="'Rp ' + selected.price.toLocaleString()"></span></p>
+            <img :src="selected.image" alt="Artist Photo" class="w-full h-56 object-cover rounded mb-4 artist-image" loading="lazy">
+            <button
+                class="btn-primary w-full text-white font-bold py-3 rounded focus:outline-none"
+                @click="ticketModal = true"
+            >
+                Buy Tickets
+            </button>
+        </div>
+    </div>
+
+    <div
+        class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50"
+        x-show="ticketModal"
+        x-transition.opacity
+    >
+        <div
+            class="bg-gray-700 text-white p-6 rounded-xl w-full max-w-md"
+            @click.away="ticketModal = false"
+        >
+            <h3 class="text-xl font-bold mb-4">Choose Ticket Type and Quantity</h3>
+            <template x-for="(details, type) in ticketTypes" :key="type">
+                <div class="mb-3">
+                    <button
+                        class="w-full bg-gray-600 hover:bg-gray-500 py-3 px-4 rounded-lg text-left focus:outline-none flex justify-between items-center"
+                        @click="selectedType = type; selectedPrice = selected.price * details.multiplier"
+                    >
+                        <div>
+                            <strong x-text="type"></strong> -
+                            Rp <span x-text="(selected.price * details.multiplier).toLocaleString()"></span>
+                            <p class="text-xs text-gray-400" x-text="details.description"></p>
+                        </div>
+                        <div class="flex items-center">
+                            <label class="mr-2 text-sm text-gray-300">Qty:</label>
+                            <select
+                                x-model="ticketQuantities[type]"
+                                class="bg-gray-500 rounded px-2 py-1 text-white text-sm focus:outline-none"
+                                @change="updateTotalPrice()"
+                            >
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </button>
+                </div>
+            </template>
+
+            <div class="mt-4">
+                <label for="paymentInfo" class="block mb-1 text-sm text-gray-300">Enter Bank / e-Wallet Name</label>
+                <input
+                    type="text"
+                    id="paymentInfo"
+                    x-model="paymentInfo"
+                    class="w-full bg-gray-500 rounded px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    placeholder="Example: BCA, OVO, DANA, etc."
+                >
+            </div>
+
+            <div class="mt-4 font-semibold">
+                Total Price: <span class="text-green-400">Rp <span x-text="totalPrice.toLocaleString()"></span></span>
+            </div>
+
+            <div class="flex justify-end items-center mt-6 gap-2">
+                <button class="bg-gray-500 text-white px-4 py-2 rounded focus:outline-none hover:bg-gray-400" @click="ticketModal = false">Cancel</button>
+                <button
+                    class="btn-primary px-4 py-2 rounded text-white font-bold focus:outline-none"
+                    :disabled="totalPrice === 0 || !paymentInfo"
+                    @click="confirmPurchase"
+                >
+                    Confirm Payment
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div
+        class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
+        x-show="successModal"
+        x-transition.opacity
+    >
+        <div class="bg-gray-800 p-8 rounded-2xl shadow-xl flex flex-col items-center">
+            <svg class="w-16 h-16 text-green-400 mb-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            <h4 class="text-2xl font-semibold mb-2">Payment Successful</h4>
+            <p class="text-gray-300 mb-4">Your tickets have been confirmed.</p>
+            <button
+                class="btn-primary text-white font-semibold py-3 px-6 rounded hover:bg-blue-600 focus:outline-none"
+                @click="printTicket">
+                Print Tickets
+            </button>
+            <button
+                class="mt-3 text-gray-400 hover:text-white focus:outline-none"
+                @click="successModal = false"
+            >
+                Close
+            </button>
+        </div>
+    </div>
+
+    <div id="printArea" class="hidden print:block p-6 max-w-md mx-auto bg-white text-black rounded-xl shadow-xl mt-10">
+        <h2 class="text-2xl font-bold mb-3">Concert Ticket</h2>
+        <p><strong>Artist Name:</strong> <span x-text="selected.name"></span></p>
+        <p><strong>Ticket Type:</strong> <span x-text="selectedType"></span></p>
+        <p><strong>Quantity:</strong> <span x-text="ticketQuantities[selectedType] || 0"></span></p>
+        <p><strong>Price per Ticket:</strong> Rp <span x-text="(selectedPrice / (ticketQuantities[selectedType] || 1)).toLocaleString()"></span></p>
+        <p><strong>Total Price:</strong> Rp <span x-text="totalPrice.toLocaleString()"></span></p>
+        <p><strong>Payment Method:</strong> <span x-text="paymentInfo"></span></p>
+        <p><strong>Print Date:</strong> <span x-text="new Date().toLocaleDateString('en-US')"></span></p>
+        <div class="mt-4 border-t pt-4 text-sm text-gray-700">
+            Thank you for purchasing tickets!
+        </div>
+    </div>
+
+
+    <div class="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 bg-black text-white">
+        <div class="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="sm:col-span-2">
+            <a href="#" class="flex items-center space-x-2">
+                <img src="image/icon2.png" class="h-10 sm:h-10 md:h-14 lg:h-12" alt="Concert Logo">
+                <span class="text-2xl font-semibold text-white">Auloora Concert</span>
+            </a>
+            <div class="mt-6 lg:max-w-sm">
+              <p class="text-sm text-gray-300">
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
+              </p>
+              <p class="mt-4 text-sm text-gray-300">
+                Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+              </p>
+            </div>
+          </div>
+          <div class="space-y-2 text-sm">
+            <p class="text-base font-bold tracking-wide text-white">Contacts</p>
+            <div class="flex">
+              <p class="mr-1 text-gray-300">Phone:</p>
+              <a href="tel:850-123-5021" class="transition-colors duration-300 text-purple-400 hover:text-purple-300">850-123-5021</a>
+            </div>
+            <div class="flex">
+              <p class="mr-1 text-gray-300">Email:</p>
+              <a href="mailto:info@lorem.mail" class="transition-colors duration-300 text-purple-400 hover:text-purple-300">info@lorem.mail</a>
+            </div>
+            <div class="flex">
+              <p class="mr-1 text-gray-300">Address:</p>
+              <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer" class="transition-colors duration-300 text-purple-400 hover:text-purple-300">312 Lovely Street, NY</a>
+            </div>
+          </div>
+          <div>
+            <span class="text-base font-bold tracking-wide text-white">Social</span>
+            <div class="flex items-center mt-1 space-x-3">
+              <a href="/" class="text-gray-400 transition-colors duration-300 hover:text-purple-400">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">
+                  <path d="..."></path> <!-- (path tetap seperti sebelumnya) -->
+                </svg>
+              </a>
+              <a href="/" class="text-gray-400 transition-colors duration-300 hover:text-purple-400">
+                <svg viewBox="0 0 30 30" fill="currentColor" class="h-6">
+                  <circle cx="15" cy="15" r="4"></circle>
+                  <path d="..."></path>
+                </svg>
+              </a>
+              <a href="/" class="text-gray-400 transition-colors duration-300 hover:text-purple-400">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">
+                  <path d="..."></path>
+                </svg>
+              </a>
+            </div>
+            <p class="mt-4 text-sm text-gray-400">
+              Bacon ipsum dolor amet short ribs pig sausage prosciutto chicken spare ribs salami.
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-col-reverse justify-between pt-5 pb-10 border-t border-gray-700 lg:flex-row">
+          <p class="text-sm text-gray-500">© Copyright 2020 Lorem Inc. All rights reserved.</p>
+          <ul class="flex flex-col mb-3 space-y-2 lg:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row">
+            <li>
+              <a href="/" class="text-sm text-gray-400 transition-colors duration-300 hover:text-white">F.A.Q</a>
+            </li>
+            <li>
+              <a href="/" class="text-sm text-gray-400 transition-colors duration-300 hover:text-white">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="/" class="text-sm text-gray-400 transition-colors duration-300 hover:text-white">Terms &amp; Conditions</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('collection', () => ({
+                filter: '*',
+                showModal: false,
+                ticketModal: false,
+                successModal: false,
+                selected: {},
+                selectedType: '',
+                selectedPrice: 0,
+                paymentInfo: '',
+                ticketQuantities: {
+                    'Silver': 0,
+                    'Gold': 0,
+                    'Platinum': 0
+                },
+                artists: [
+                    { name: 'IU', month: '2 Mei', category: 'best', price: 250000, image: 'image/artist/singger/buy8.jpg' },
+                    { name: 'BIBI', month: '3 Mei', category: 'feat', price: 200000, image: 'image/artist/singger/buy7.jpg' },
+                    { name: 'JISO', month: '4 Mei', category: 'new', price: 250000, image: 'image/artist/singger/buy6.jpg' },
+                    { name: 'JENNIE', month: '2 Mei', category: 'best', price: 300000, image: 'image/artist/singger/buy5.jpg' },
+                    { name: 'ROSE', month: '3 Mei', category: 'feat', price: 220000, image: 'image/artist/singger/buy4.jpg' },
+                    { name: 'JUNGKOOK', month: '4 Mei', category: 'new', price: 270000, image: 'image/artist/singger/buy3.jpg' },
+                    { name: 'J-HOPE', month: '3 Mei', category: 'feat', price: 210000, image: 'image/artist/singger/buy2.jpg' },
+                    { name: 'LISA', month: '2 Mei', category: 'new', price: 350000, image: 'image/artist/singger/buy1.jpg' }
+                ],
+                ticketTypes: {
+                    'Silver': { multiplier: 1, description: 'Basic entry ticket.' },
+                    'Gold': { multiplier: 1.5, description: 'Includes early access and a souvenir.' },
+                    'Platinum': { multiplier: 2, description: 'Premium seating, backstage pass, and merchandise.' }
+                },
+                get filteredArtists() {
+                    return this.filter === '*' ? this.artists : this.artists.filter(a => a.month === this.filter);
+                },
+                categoryLabel(cat) { // Fungsi ini sekarang tidak terlalu relevan untuk filter tanggal
+                    return {
+                        best: 'Best Seller',
+                        feat: 'Featured',
+                        new: 'New'
+                    }[cat] || 'All';
+                },
+                selectArtist(artist) {
+                    this.selected = artist;
+                    this.selectedType = '';
+                    this.selectedPrice = 0;
+                    this.paymentInfo = '';
+                    this.ticketQuantities = { 'Silver': 0, 'Gold': 0, 'Platinum': 0 };
+                    this.showModal = true;
+                },
+                updateTotalPrice() {
+                    let total = 0;
+                    for (const type in this.ticketQuantities) {
+                        total += this.selected.price * this.ticketTypes[type].multiplier * this.ticketQuantities[type];
+                    }
+                    this.totalPrice = total;
+                },
+                confirmPurchase() {
+                    if (this.totalPrice > 0 && this.paymentInfo) {
+                        this.ticketModal = false;
+                        this.showModal = false;
+                        setTimeout(() => {
+                            this.successModal = true;
+                        }, 300);
+                    } else if (this.totalPrice === 0) {
+                        alert('Please select at least one ticket.');
+                    } else if (!this.paymentInfo) {
+                        alert('Please enter your payment information.');
+                    }
+                },
+                printTicket() {
+                    this.successModal = false;
+                    setTimeout(() => {
+                        window.print();
+                    }, 500); // Slight delay to ensure success modal is closed
+                },
+                totalPrice: 0,
+            }));
+        });
+    </script>
+</body>
+</html>

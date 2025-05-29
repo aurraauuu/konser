@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black">
+  <nav class="fixed top-0 left-0 w-full z-50 bg-transparent shadow-md transition-all duration-300 ease-in-out">
+    <div class="flex items-center justify-between max-w-screen-xl px-6 mx-auto py-4">
+        <!-- Logo -->
+        <a href="#" class="flex items-center space-x-2">
+          <img src="image/icon2.png" class="h-8 sm:h-10" alt="Concert Logo">
+
+            <span class="text-2xl font-semibold text-white">Auloora Concert</span>
+        </a>
+
+        <!-- Navigation Links -->
+        <div class="hidden lg:flex space-x-8">
+            <a href="index.html" class="text-white hover:text-yellow-500 transition duration-300">Home</a>
+            <a href="#About Event" class="text-white hover:text-yellow-500 transition duration-300">About Event</a>
+            <a href="#Artist" class="text-white hover:text-yellow-500 transition duration-300">Artist</a>
+            <a href="#Testimonial" class="text-white hover:text-yellow-500 transition duration-300">Testimonial </a>
+            <a href="#Gallery" class="text-white hover:text-yellow-500 transition duration-300">Gallery</a>
+            <a href="#Location" class="text-white hover:text-yellow-500 transition duration-300">Location</a>
+        </div>
+
+        <!-- Download Button -->
+        <a href="2.html"
+           class="hidden sm:inline-block bg-red-600 text-white py-2 px-6 rounded-lg hover:bg-red-700 transition-all duration-300">
+            Buy Ticket
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button data-collapse-toggle="mobile-menu-2" type="button"
+                class="inline-flex items-center p-2 text-white bg-transparent rounded-lg lg:hidden hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                      d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                      clip-rule="evenodd"></path>
+            </svg>
+        </button>
+    </div>
+</nav>
+
+<!-- Content Section -->
+<section class="relative bg-gradient-to-r from-purple-600 to-blue-600 h-screen text-white overflow-hidden">
+    <div class="absolute inset-0">
+        <img src="image/baner/baner.jpeg" alt="Concert Background" class="w-full h-full object-cover object-center opacity-60" />
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+    </div>
+    <div class="relative z-10 flex flex-col justify-center items-center h-full text-center">
+        <h1 class="text-5xl font-bold leading-tight mb-4">welcome to aulora concert 2025</h1>
+        <p class="text-lg text-gray-300 mb-8">Get ready for the most electrifying live show of the year!</p>
+        <a href="2.html"
+           class="bg-red-600 text-gray-900 hover:bg-red-800 py-3 px-8 rounded-full text-lg font-semibold transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">
+            Get Your Tickets Now
+        </a>
+    </div>
+</section>
+
+
+<!-- About Section -->
+  <section id="About Event" class="py-24 px-6 bg-black">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="text-4xl font-bold border-b-4 border-red-600 inline-block mb-6 text-white">About the Event</h2>
+        <p class="text-gray-300 mb-4">Experience a night of unforgettable music, energy, and connection. Our event brings together talented artists, immersive lighting, and a vibrant crowd for a celebration of sound and emotion.</p>
+        <p class="text-sm text-gray-400">Join us and be part of something extraordinary — where rhythm meets the soul.</p>
+      </div>
+      <div>
+        <img src="image/baner/about.jpeg" alt="About Image" class="w-full h-[400px] object-cover rounded-xl grayscale hover:grayscale-0 transition duration-500">
+      </div>
+    </div>
+  </section>
+
+  <section id="countdown" class="py-16 bg-gray-900 fade-in">
+    <div class="container mx-auto text-center">
+        <h2 class="text-3xl font-bold text-white">Countdown to Auloora Concert</h2>
+        <div id="timer" class="text-4xl font-bold text-red-700 mt-4"></div>
+    </div>
+</section>
+      
+
+<div class="flex flex-wrap justify-center gap-6 p-6 min-h-screen bg-[#0a0a0a] mt-10" id="Artist">
+  
+  <!-- CARD 1 -->
+  <a href="#" class="group relative w-full sm:w-[300px] md:w-[320px] lg:w-[340px] rounded-xl overflow-hidden bg-black shadow-lg hover:shadow-red-900/30 transition-shadow duration-300">
+    <img
+      src="image/artist/artis1.jpeg"
+      alt="Taylor swif"
+      class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-40 transition-opacity duration-300"
+    />
+    <div class="relative z-10 p-6">
+      <p class="text-sm font-semibold tracking-wide text-pink-400 uppercase">Singer</p>
+      <h3 class="text-xl font-bold text-white mt-1">Jennie</h3>
+
+      <div class="mt-32">
+        <div class="opacity-0 transform translate-y-8 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+          <p class="text-sm text-gray-200">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates doloremque reiciendis nostrum harum.
+          </p>
+        </div>
+      </div>
+    </div>
+  </a>
+
+  <!-- CARD 2 -->
+  <a href="#" class="group relative w-full sm:w-[300px] md:w-[320px] lg:w-[340px] rounded-xl overflow-hidden bg-black shadow-lg hover:shadow-red-900/30 transition-shadow duration-300">
+    <img
+      src="image/artist/artis2.jpeg"
+      alt="Bruno Mars"
+      class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-40 transition-opacity duration-300"
+    />
+    <div class="relative z-10 p-6">
+      <p class="text-sm font-semibold tracking-wide text-pink-400 uppercase">Singer</p>
+      <h3 class="text-xl font-bold text-white mt-1">J-Hope</h3>
+
+      <div class="mt-32">
+        <div class="opacity-0 transform translate-y-8 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+          <p class="text-sm text-gray-200">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates doloremque reiciendis nostrum harum.
+          </p>
+        </div>
+      </div>
+    </div>
+  </a>
+
+  
+
+  <!-- CARD 3 -->
+  <a href="#" class="group relative w-full sm:w-[300px] md:w-[320px] lg:w-[340px] rounded-xl overflow-hidden bg-black shadow-lg hover:shadow-red-900/30 transition-shadow duration-300">
+    <img
+      src="image/artist/artis3.jpeg"
+      alt="Sabrina Canpenter"
+      class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-40 transition-opacity duration-300"
+    />
+    <div class="relative z-10 p-6">
+      <p class="text-sm font-semibold tracking-wide text-pink-400 uppercase">Singer</p>
+      <h3 class="text-xl font-bold text-white mt-1">Lisa</h3>
+
+      <div class="mt-32">
+        <div class="opacity-0 transform translate-y-8 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+          <p class="text-sm text-gray-200">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates doloremque reiciendis nostrum harum.
+          </p>
+        </div>
+      </div>
+    </div>
+  </a>
+
+</div>
+
+      
+     
+
+    
+        
+       
+        
+      
+
+
+<section class="bg-black text-white py-16 px-6 md:px-20" id="Testimonial">
+  <div class="max-w-3xl mx-auto text-center">
+    <svg class="w-10 h-10 text-red-700 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M7.17 5.59A7 7 0 0 0 5 12v7h6v-7H8.5a3.5 3.5 0 0 1 3.33-4.59L12 5h-4.83zM17.17 5.59A7 7 0 0 0 15 12v7h6v-7h-2.5a3.5 3.5 0 0 1 3.33-4.59L22 5h-4.83z"/>
+    </svg>
+    <p class="text-lg md:text-xl italic leading-relaxed text-gray-200">
+      "From the moment the lights dimmed to the final roar of the crowd, it felt like diving into another dimension.
+      The <span class="text-red-600 font-semibold">red accents</span> on stage pulsed like a heartbeat—intense yet mesmerizing.
+      A night I’ll never forget."
+    </p>
+    <p class="mt-6 text-red-600 font-bold">— Alya, 23, Jakarta</p>
+  </div>
+</section>
+
+
+
+<section class="bg-black-50 overflow-hidden" id="Gallery">
+    <div class="max-w-screen-xl 2xl:max-w-screen-3xl px-8 md:px-12 mx-auto py-12 lg:py-24 space-y-24 h-svh flex flex-col justify-center">
+     <div class="flex flex-col sm:flex-row mx-auto">
+      <!--- Starts component --> <a href="#_"> <img src="image/gallery/gallery1.jpeg" class="rounded-xl  rotate-6 hover:rotate-0 duration-500 hover:-translate-y-12 h-full w-full object-cover hover:scale-150 transform origin-bottom" alt="#_"> </a><a href="#_"> <img src="image/gallery/gallery2.jpeg" class="rounded-xl  -rotate-12 hover:rotate-0 duration-500 hover:-translate-y-12 h-full w-full object-cover hover:scale-150 transform origin-bottom" alt="#_"> </a><a href="#_"> <img src="image/gallery/gallery3.jpeg" class="rounded-xl  rotate-6 hover:rotate-0 duration-500 hover:-translate-y-12 h-full w-full object-cover hover:scale-150 transform origin-bottom" alt="#_"> </a><a href="#_"> <img src="image/gallery/gallery4.jpeg" class="rounded-xl  -rotate-12 hover:rotate-0 duration-500 hover:-translate-y-12 h-full w-full object-cover hover:scale-150 transform origin-bottom" alt="#_"> </a>
+      <!--- Ends component -->
+     </div>
+    </div>
+   </section>
+
+   <section class="bg-black">
+  <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-20 lg:px-8">
+    <div class="max-w-2xl lg:max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-extrabold text-white">Visit Our Location</h2>
+      <p class="mt-4 text-lg text-gray-300">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    </div>
+    <div class="mt-16 lg:mt-20">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="rounded-lg overflow-hidden">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11672.945750644447!2d-122.42107853750231!3d37.7730507907087!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858070cc2fbd55%3A0xa71491d736f62d5c!2sGolden%20Gate%20Bridge!5e0!3m2!1sen!2sus!4v1619524992238!5m2!1sen!2sus"
+            width="100%" height="480" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <div>
+          <div class="max-w-full mx-auto rounded-lg overflow-hidden bg-zinc-900">
+            <div class="px-6 py-4">
+              <h3 class="text-lg font-medium text-white">Our Address</h3>
+              <p class="mt-1 text-gray-400">123 Main St, San Francisco, CA 94105</p>
+            </div>
+            <div class="border-t border-gray-700 px-6 py-4">
+              <h3 class="text-lg font-medium text-white">Hours</h3>
+              <p class="mt-1 text-gray-400">Monday - Friday: 9am - 5pm</p>
+              <p class="mt-1 text-gray-400">Saturday: 10am - 4pm</p>
+              <p class="mt-1 text-gray-400">Sunday: Closed</p>
+            </div>
+            <div class="border-t border-gray-700 px-6 py-4">
+              <h3 class="text-lg font-medium text-white">Contact</h3>
+              <p class="mt-1 text-gray-400">Email: info@example.com</p>
+              <p class="mt-1 text-gray-400">Phone: +1 23494 34993</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+   
+
+<div class="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 bg-black text-white" id="Location">
+  <div class="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="sm:col-span-2">
+      <a href="#" class="flex items-center space-x-2">
+        <img src="image/icon2.png" class="h-10 sm:h-10 md:h-14 lg:h-12" alt="Concert Logo">
+        <span class="text-2xl font-semibold text-white">Auloora Concert</span>
+    </a>
+      <div class="mt-6 lg:max-w-sm">
+        <p class="text-sm text-gray-300">
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
+        </p>
+        <p class="mt-4 text-sm text-gray-300">
+          Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+        </p>
+      </div>
+    </div>
+    <div class="space-y-2 text-sm">
+      <p class="text-base font-bold tracking-wide text-white">Contacts</p>
+      <div class="flex">
+        <p class="mr-1 text-gray-300">Phone:</p>
+        <a href="tel:850-123-5021" class="transition-colors duration-300 text-purple-400 hover:text-purple-300">850-123-5021</a>
+      </div>
+      <div class="flex">
+        <p class="mr-1 text-gray-300">Email:</p>
+        <a href="mailto:info@lorem.mail" class="transition-colors duration-300 text-purple-400 hover:text-purple-300">info@lorem.mail</a>
+      </div>
+      <div class="flex">
+        <p class="mr-1 text-gray-300">Address:</p>
+        <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer" class="transition-colors duration-300 text-purple-400 hover:text-purple-300">312 Lovely Street, NY</a>
+      </div>
+    </div>
+    <div>
+      <span class="text-base font-bold tracking-wide text-white">Social</span>
+      <div class="flex items-center mt-1 space-x-3">
+        <a href="/" class="text-gray-400 transition-colors duration-300 hover:text-purple-400">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">
+            <path d="..."></path> <!-- (path tetap seperti sebelumnya) -->
+          </svg>
+        </a>
+        <a href="/" class="text-gray-400 transition-colors duration-300 hover:text-purple-400">
+          <svg viewBox="0 0 30 30" fill="currentColor" class="h-6">
+            <circle cx="15" cy="15" r="4"></circle>
+            <path d="..."></path>
+          </svg>
+        </a>
+        <a href="/" class="text-gray-400 transition-colors duration-300 hover:text-purple-400">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">
+            <path d="..."></path>
+          </svg>
+        </a>
+      </div>
+      <p class="mt-4 text-sm text-gray-400">
+        Bacon ipsum dolor amet short ribs pig sausage prosciutto chicken spare ribs salami.
+      </p>
+    </div>
+  </div>
+  <div class="flex flex-col-reverse justify-between pt-5 pb-10 border-t border-gray-700 lg:flex-row">
+    <p class="text-sm text-gray-500">© Copyright 2020 Lorem Inc. All rights reserved.</p>
+    <ul class="flex flex-col mb-3 space-y-2 lg:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row">
+      <li>
+        <a href="/" class="text-sm text-gray-400 transition-colors duration-300 hover:text-white">F.A.Q</a>
+      </li>
+      <li>
+        <a href="/" class="text-sm text-gray-400 transition-colors duration-300 hover:text-white">Privacy Policy</a>
+      </li>
+      <li>
+        <a href="/" class="text-sm text-gray-400 transition-colors duration-300 hover:text-white">Terms &amp; Conditions</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+          
+
+          
+      <script>
+        const countDownDate = new Date("May 25, 2025 20:00:00").getTime();
+
+const x = setInterval(function () {
+    const now = new Date().getTime();
+    const distance = countDownDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("timer").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("timer").innerHTML = "EXPIRED";
+    }
+}, 1000);
+      </script>
+      
+    
+    <script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
+</body>
+</html>
